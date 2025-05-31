@@ -1,4 +1,4 @@
-"Welcome to Blockchain"
+const {GENESIS_DATA} = require('./GenesisBlock.js');
 
 class Block {
     constructor({timestamp, data, previousHash = '', hash = ''}){
@@ -7,26 +7,12 @@ class Block {
         this.previousHash = previousHash;
         this.hash = hash;
     }
+
+    static genesis() { 
+        return new this(GENESIS_DATA);
+    }
 }
 
 
-const genesisBlock = new Block({
-    timestamp: '01/01/2025',      
-    data: {
-        amount: 50
-    },
-    previousHash: '',
-    hash: '000'
-    });
-    
-const block1 = new Block({
-    timestamp: '02/01/2025',
-    data: {
-        amount: 100
-    },
-    previousHash: genesisBlock.hash,
-    hash: '001'
-});
-
+const genesisBlock = Block.genesis();
 console.log(genesisBlock);
-console.log(block1);
