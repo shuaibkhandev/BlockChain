@@ -6,4 +6,4 @@ const GENESIS_DATA = {
 }
 
 
-module.exports = {GENESIS_DATA}
+module.exports = GENESIS_DATA

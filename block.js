@@ -1,5 +1,5 @@
-const {GENESIS_DATA} = require('./GenesisBlock.js');
-
+const GENESIS_DATA = require('./GenesisBlock.js');
+const cryptoHash = require('./crypto-hash.js');
 class Block {
     constructor({timestamp, data, previousHash = '', hash = ''}){
         this.timestamp = timestamp;
