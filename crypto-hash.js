@@ -6,5 +6,5 @@ const cryptoHash = (...inputes) =>{
 
 }
 
-module.exports = cryptoHash("bar", "foo", "baz");
+module.exports = cryptoHash;
 
