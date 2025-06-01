@@ -26,14 +26,4 @@ class Block {
         });
     }
 }
-
-const block1 = new Block({
-        timestamp: '01/01/2023',
-        data: 'Block 1 Data',
-        previousHash: '0000',
-        hash: '1234abcd'
-    });
-
-
-const block2 = Block.miningBlock({prevBlock: block1, data: '500 coins to Alice'});
-console.log("Block 2:",block2);
+module.exports = Block;
