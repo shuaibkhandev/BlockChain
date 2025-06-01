@@ -9,5 +9,8 @@ const dimensions = {
   height: 5
 };
 
-const area = calculateArea(dimensions);
-console.log("Area:", area); // Output: Area: 50
+// const area = calculateArea(dimensions);
+// console.log("Area:", area); // Output: Area: 50
+
+
+// console.log(JSON.stringify(["Start", "Middle", "End"]));
