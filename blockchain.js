@@ -35,15 +35,12 @@ class Blockchain {
 
 
     for(let i = 1; i<chain.length; i++){
-      const {timestamp, previousHash, hash, data} = chain[i];
-      console.log(chain[i]);
-      
+      const {timestamp, previousHash, hash, data, nonce, difficulity} = chain[i];
       const realLastHash = chain[i-1].hash;
-      console.log(realLastHash);
       
       if(previousHash!==realLastHash) return false
 
-      const validatedHash = cryptoHash(timestamp, previousHash, data);
+      const validatedHash = cryptoHash(timestamp, previousHash, data, nonce, difficulity);
       if(hash !== validatedHash) return false;
 
     }
@@ -60,13 +57,7 @@ blockchain.addBlock({ data: "second block" });
 
 
 
-// console.log(chain.chain[2]);
-
-const result = Blockchain.isValidChain(blockchain.chain)
-
-
-
-console.log(result);
+console.log(blockchain);
 
 
 

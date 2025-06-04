@@ -1,5 +1,5 @@
 const Block = require("./block");
-
+const cryptoHash = require("./CryptoHash");
 
 
 class BlockChain{
@@ -16,6 +16,20 @@ class BlockChain{
         return newBlock;
     }
 
+      replaceChain(chain){
+    if(chain <= this.chain.length){
+      console.error('The incomming chain is not longer');
+      return;
+    }
+
+    if(!BlockChain.isValidChain(chain)){
+      console.error("The incomming chain is not valid");
+      return;
+    }
+    this.chain = chain;
+  }
+
+
     static isValidChain(chain){
         
         if(JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis()))  return false;
@@ -26,6 +40,8 @@ class BlockChain{
           
            if(prevHash !== realLastHash) return false
            
+           const validatedHash = cryptoHash(timestamp, data, prevHash);
+           if(hash !== validatedHash) return false;
         }
          return true
     }
@@ -37,6 +53,6 @@ blockchain.addBlock({data:"NEW BLOCK 1"});
 blockchain.addBlock({data:"NEW BLOCK 2"});
 blockchain.addBlock({data:"NEW BLOCK 3"});
 blockchain.addBlock({data:"NEW BLOCK 4"});
-// console.log(blockchain.chain);
-console.log(BlockChain.isValidChain(blockchain.chain));
+console.log(blockchain.chain);
+// console.log(BlockChain.isValidChain(blockchain.chain));
 
