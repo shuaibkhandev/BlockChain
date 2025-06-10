@@ -1,4 +1,5 @@
 const GENESIS_DATA = require('./GenesisBlock.js');
+const { MINE_RATE } = require('./config.js');
 const cryptoHash = require('./crypto-hash.js');
 class Block {
     constructor({timestamp, data, previousHash = '', hash = '', nonce, difficulity}){
@@ -20,11 +21,11 @@ class Block {
         let hash, timestamp;
         const previousHash = prevBlock.hash;
         let nonce = prevBlock.nonce;
-        const difficulity = prevBlock.difficulity;
-
+        let {difficulity} = prevBlock;
         do{
             nonce ++;
             timestamp = Date.now();
+            difficulity = Block.adjustDifficulity({originalBlock : prevBlock, timestamp})
             hash = cryptoHash(timestamp, previousHash, data, nonce, difficulity)
         }while(hash.substring(0, difficulity) !== '0'.repeat(difficulity))
 
@@ -35,6 +36,16 @@ class Block {
             hash,
             nonce, difficulity
         });
+    }
+
+    static adjustDifficulity({originalBlock, timestamp}){
+        let {difficulity} = originalBlock;
+        if(difficulity < 1) return 1;
+        const difference = timestamp - originalBlock.timestamp;
+ 
+        
+        if(difference > MINE_RATE) return difficulity -1;
+        return difficulity + 1;
     }
 }
 module.exports = Block;

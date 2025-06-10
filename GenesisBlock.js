@@ -1,7 +1,7 @@
 const INITIAL_DIFFICULITY = 2;
 
 const GENESIS_DATA = {
-    timestamp: '01/01/2025',
+    timestamp: 1,
     data : "Welcome to Blockchain! Genesis Block",
     previousHash: '',
     hash: '0000000000000000000000000000000000000000000000000000000000000000',
