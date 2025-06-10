@@ -1,3 +1,5 @@
+const {GENESIS_DATA} = require("./config");
+
 class Block{
     constructor({timestamp, prevHash, hash, data}){
         this.timestamp = timestamp;
@@ -5,8 +7,15 @@ class Block{
         this.hash = hash;
         this.data = data;
     }
+
+    static genesis(){
+      return new this(GENESIS_DATA)
+      
+    }
 }
 
+
 const block1 = new Block({timestamp:1, prevHash:"000", hash:"0ab3", data:"Hello"});
-const block2 = new Block({timestamp:2, prevHash:"0ab3", hash:"0f12", data:"World"});
-console.log(block2);
+console.log(Block.genesis());
+
+
