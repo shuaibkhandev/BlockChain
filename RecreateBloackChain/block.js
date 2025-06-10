@@ -1,5 +1,5 @@
 class Block{
-    constructor(timestamp, prevHash, hash, data){
+    constructor({timestamp, prevHash, hash, data}){
         this.timestamp = timestamp;
         this.prevHash = prevHash;
         this.hash = hash;
@@ -7,6 +7,6 @@ class Block{
     }
 }
 
-
-const block1 = new Block(1, "000", "0ab3", "Hello");
-console.log(block1);
+const block1 = new Block({timestamp:1, prevHash:"000", hash:"0ab3", data:"Hello"});
+const block2 = new Block({timestamp:2, prevHash:"0ab3", hash:"0f12", data:"World"});
+console.log(block2);
