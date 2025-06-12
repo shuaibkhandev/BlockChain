@@ -47,4 +47,6 @@ const blockchain = new BlockChain();
 blockchain.addBlock({data:"1060pkr"});
 blockchain.addBlock({data:"1999pkr"});
 blockchain.addBlock({data:"650pkr"});
+blockchain.addBlock({data:"1650pkr"});
+blockchain.addBlock({data:"150pkr"});
 console.log(blockchain);

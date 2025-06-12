@@ -1,5 +1,5 @@
-
-const INITIAL_DIFFICULITY = 6;
+const MINE_RATE = 1000; /* 1000MILISEC = 1SEC */
+const INITIAL_DIFFICULITY = 3;
 const GENESIS_DATA = {
     timestamp : 1,
     prevHash : '',
@@ -10,4 +10,4 @@ const GENESIS_DATA = {
 }
 
 
-module.exports = {GENESIS_DATA} 
+module.exports = {GENESIS_DATA, MINE_RATE} 
