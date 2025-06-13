@@ -31,12 +31,15 @@ class BlockChain{
         if( JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) return false;
         for(let i = 1; i<chain.length; i++){
             const {timestamp, data, prevHash , hash} = chain[i];
-
+            const lastDifficulity = chain[i-1].difficulity;
+            
             const realLastHash = chain[i-1].hash;
             if(realLastHash !== prevHash) return false;
     
             const validatedHash = cryptoHash(timestamp, prevHash, data);
-            if(validatedHash !== hash) return false;        
+            if(validatedHash !== hash) return false;
+            if(Math.abs(lastDifficulity - difficulity) > 1) return false;
+
         }
         return true;
     }
