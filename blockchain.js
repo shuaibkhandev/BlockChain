@@ -46,7 +46,12 @@ class BlockChain{
 }
 
 
-
-
-module.exports = BlockChain
+const blockchain = new BlockChain();
+blockchain.addBlock({data:"Block1"});
+blockchain.addBlock({data:"Block2"});
+blockchain.addBlock({data:"Block3"});
+blockchain.addBlock({data:"Block4"});
+blockchain.addBlock({data:"Block5"});
+blockchain.addBlock({data:"Block6"});
+module.exports = {blockchain};
     
