@@ -9,7 +9,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "dev-peer": "cross-env GENERATE_PEER_PORT=true nodemon app.js"
   },
   "dependencies": {
     "body-parser": "^2.2.0",
