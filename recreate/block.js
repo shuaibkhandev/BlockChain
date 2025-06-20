@@ -23,7 +23,5 @@ static mining({prevBlock, data}){
 }
 
 
-
-console.log(Block.mining({prevBlock:GENESIS_DATA, data:"HELO"}));
-
+module.exports = Block;
 
