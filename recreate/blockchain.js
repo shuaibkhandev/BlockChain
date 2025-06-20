@@ -15,6 +15,19 @@ class BlockChain {
         this.chain.push(newBlock)
     }
 
+     replaceChain(chain){
+    if(chain.length < this.chain.length){
+        console.error("The incoming chain is not longer.");
+        return false;
+    }
+    if(!BlockChain.isValidChain(chain)){
+        console.error("The incoming chain is not valid.");
+        return false;
+        
+    }    
+    this.chain = chain;
+    }
+
    static isValidChain(chain){
   if(JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())){
     return false;
@@ -37,7 +50,6 @@ class BlockChain {
     return true;
   }
 
-
    }
 }
 
@@ -46,4 +58,4 @@ const blockchain = new BlockChain();
  blockchain.addBlock({data:"WORLD"})
 
 
-console.log(BlockChain.isValidChain(blockchain.chain));
+
