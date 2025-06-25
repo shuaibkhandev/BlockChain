@@ -1,13 +1,13 @@
-const MINIE_RATE = 1000;
+const MINE_RATE = 1000;
 const INITIAL_DIFFICULITY = 2;
 const GENESIS_DATA = {
-    timestamp : Date.now(),
-    prevHash : '',
+    timestamp : 1,
+    prevHash : "",
     hash : "0000000000000000000000000000000000000000000000000000000000000000",
-    difficulity: INITIAL_DIFFICULITY,
     nonce:0,
+    difficulity:INITIAL_DIFFICULITY,
     data : []
 }
 
 
-module.exports = {GENESIS_DATA, MINIE_RATE}
+module.exports = {GENESIS_DATA, MINE_RATE}

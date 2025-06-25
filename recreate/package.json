@@ -1,11 +1,11 @@
 {
-  "name": "bloch-chain",
+  "name": "recreate",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "block.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node blockchain.js",
-    "dev":"nodemon blockchain.js"
+    "start": "node blockchain.js",
+    "dev": "nodemon blockchain.js"
   },
   "keywords": [],
   "author": "",
