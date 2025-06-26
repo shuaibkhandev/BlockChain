@@ -48,11 +48,6 @@ class BlockChain{
 }
 
 
-const blockchain = new BlockChain();
-blockchain.addBlock({data:"First Block"});
-blockchain.addBlock({data:"Second Block"});
-
-console.log(blockchain.chain);
 
 
 module.exports = BlockChain;

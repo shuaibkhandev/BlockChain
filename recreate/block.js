@@ -19,9 +19,10 @@ class Block{
       let timestamp, hash;
       
       const prevHash = prevBlock.hash;
-      let {difficulity} = prevBlock;
+      let {difficulity} = prevBlock; 
       let nonce = 0;
       do{
+        
         nonce++;
         timestamp = Date.now();
         difficulity = Block.addjustDifficulity({orignalBlock:prevBlock, timestamp})
@@ -39,16 +40,12 @@ class Block{
       })
     }
 
-    static addjustDifficulity({orignalBlock, timestamp}){
- 
-      
+    static addjustDifficulity({orignalBlock, timestamp}){ 
         let {difficulity} = orignalBlock;
-console.log(difficulity);
-
         if(difficulity < 1) return 1;
         let difference = timestamp - orignalBlock.timestamp ;
 
-        if(difference > MINE_RATE) difficulity - 1;
+        if(difference > MINE_RATE) return difficulity - 1;
         return difficulity+1;
     }
 }
