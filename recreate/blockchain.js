@@ -26,7 +26,6 @@ class BlockChain{
             console.error("The incomming chain is not valid");
             return false;
         }
-
         this.chain = chain;
     }
 
