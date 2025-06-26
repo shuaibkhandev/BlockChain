@@ -1,5 +1,6 @@
 const Block = require("./block");
-const cryptoHash = require("./crypto-hash");
+const CryptoHash = require("./crypto-hash");
+
 
 
 class BlockChain{
@@ -8,44 +9,47 @@ class BlockChain{
     }
 
     addBlock({data}){
-        const newBlock = Block.miningBlock({
-            prevBlock: this.chain[this.chain.length-1],
-            data
+       const newBlock = Block.mineBlock({
+            prevBlock : this.chain[this.chain.length-1],
+            data : data
         })
-        this.chain.push(newBlock);
+        this.chain.push(newBlock)
     }
 
-    replaceChain(chain){
+       replaceChain(chain){
         if(chain.length <= this.chain.length){
-            console.error('The incoming chain is not longer');
-            return;
+        console.error("The incomming chain is not longer");
+        return false;
         }
+
         if(!BlockChain.isValidChain(chain)){
-            console.error('The incoming chain is not valid');
-            return;
+            console.error("The incomming chain is not valid");
+            return false;
         }
         this.chain = chain;
     }
 
     static isValidChain(chain){
-        if( JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) return false;
-        for(let i = 1; i<chain.length; i++){
-            const {timestamp, data, prevHash , hash} = chain[i];
-            const lastDifficulity = chain[i-1].difficulity;
-            
-            const realLastHash = chain[i-1].hash;
-            if(realLastHash !== prevHash) return false;
-    
-            const validatedHash = cryptoHash(timestamp, prevHash, data);
-            if(validatedHash !== hash) return false;
-            if(Math.abs(lastDifficulity - difficulity) > 1) return false;
+      if( JSON.stringify(chain[0]) !== JSON.stringify(Block.genesis())) return false;
+      for(let i=1; i<chain.length; i++){
+       const {timestamp, prevHash, hash, data, nonce, difficulity} = chain[i];
+       const realLastHash = chain[i-1].hash;
+       const lastDifficulity = chain[i-1].difficulity;
+       if(prevHash !== realLastHash) return false;
+       const validatedHash = CryptoHash(timestamp, prevHash, nonce, difficulity, data);
+       console.log(validatedHash, hash);
+       
+       if (hash !== validatedHash)  return false;
+       if(Math.abs(lastDifficulity-difficulity)>1) return false;     
 
-        }
-        return true;
+      }
+      return true
     }
+
+  
 }
 
 
 
+
 module.exports = BlockChain;
-    
