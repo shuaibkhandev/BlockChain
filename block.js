@@ -34,6 +34,7 @@ class Block{
         prevHash : prevHash,
         hash :hash,
         difficulity:difficulity,
+        nonce,
         data: data
       })
     }
